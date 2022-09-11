@@ -1,4 +1,4 @@
-import 'package:e_commerce_flutter/src/view/screen/size_config.dart';
+import 'package:JustDM/src/view/screen/size_config.dart';
 import 'package:flutter/material.dart';
 
 const kPrimaryColor = Color(0xff59b24d);
@@ -21,7 +21,7 @@ const kAnimationDuration = Duration(milliseconds: 200);
 final headingStyle = TextStyle(
   fontSize: getProportionateScreenWidth(28),
   fontWeight: FontWeight.bold,
-  color: Color(0xff212544),
+  color: const Color(0xff212544),
   height: 1.5,
 );
 final smallerheadingStyle = TextStyle(
@@ -41,7 +41,7 @@ const defaultDuration = Duration(milliseconds: 250);
 
 // Form Error
 final RegExp emailValidatorRegExp =
-RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+    RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 const String kEmailNullError = "Please Enter Your Email";
 const String kInvalidEmailError = "Please Enter Valid Email";
 const String kPassNullError = "Please Enter Your Password";
@@ -65,7 +65,7 @@ const String kInvalidPhoneError = "Please Enter Valid Phone Number";
 
 final otpInputDecoration = InputDecoration(
   contentPadding:
-  EdgeInsets.symmetric(vertical: getProportionateScreenWidth(15)),
+      EdgeInsets.symmetric(vertical: getProportionateScreenWidth(15)),
   border: outlineInputBorder(),
   focusedBorder: outlineInputBorder(),
   enabledBorder: outlineInputBorder(),
@@ -74,6 +74,6 @@ final otpInputDecoration = InputDecoration(
 OutlineInputBorder outlineInputBorder() {
   return OutlineInputBorder(
     borderRadius: BorderRadius.circular(getProportionateScreenWidth(15)),
-    borderSide: BorderSide(color: kTextColor),
+    borderSide: const BorderSide(color: kTextColor),
   );
 }

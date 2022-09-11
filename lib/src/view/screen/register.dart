@@ -5,6 +5,8 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'RegisterPageElements/RegisterCard.dart';
 
 class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
+
   @override
   _RegisterPageState createState() => _RegisterPageState();
 }
@@ -13,9 +15,10 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfffcf0d6),
+      backgroundColor: const Color(0xfffcf0d6),
       body: ResponsiveBuilder(
-        breakpoints: ScreenBreakpoints(tablet: 550, desktop: 800, watch: 300),
+        breakpoints:
+            const ScreenBreakpoints(tablet: 550, desktop: 800, watch: 300),
         builder: (context, sizingInformation) {
           // Check the sizing information here and return your UI
           if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
@@ -26,7 +29,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     alignment: Alignment.center,
                     child: SingleChildScrollView(
                       child: Container(
-                        padding: EdgeInsets.only(left: 20.0),
+                        padding: const EdgeInsets.only(left: 20.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -34,31 +37,31 @@ class _RegisterPageState extends State<RegisterPage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   height: 70,
                                 ),
-                                Image(
+                                const Image(
                                   height: 100,
                                   image: AssetImage(
                                     "assets/logo1.png",
                                   ),
                                   fit: BoxFit.fill,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
-                                Text(
+                                const Text(
                                     "Welcome to \nJustDM\nThe Delivery Machine ",
                                     style: TextStyle(
                                         height: 1.3,
                                         fontFamily: "Metrisch-ExtraBold",
                                         fontSize: 30)),
-                                SizedBox(
+                                const SizedBox(
                                   height: 25,
                                 ),
                                 Container(
                                   width: 250,
-                                  child: Text(
+                                  child: const Text(
                                     "Just Delivery Machine. \nBe it Emergency, laziness or you being busy. But order vale bhaiya will call you and say Gate pe aajao, AND You can’t. \nWait we can; le aaye kya? Bolo",
                                     style: TextStyle(
                                         fontFamily: "Metrisch-Medium",
@@ -67,12 +70,12 @@ class _RegisterPageState extends State<RegisterPage> {
                                         color: Colors.black54),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 25,
                                 ),
                                 Container(
-                                  padding: EdgeInsets.only(bottom: 1),
-                                  decoration: BoxDecoration(
+                                  padding: const EdgeInsets.only(bottom: 1),
+                                  decoration: const BoxDecoration(
                                     border: Border(
                                       bottom: BorderSide(
                                           width: 1.0, color: Colors.black),
@@ -82,12 +85,12 @@ class _RegisterPageState extends State<RegisterPage> {
                                   //     style: TextStyle(
                                   //         fontFamily: "Metrisch-ExtraBold", fontSize: 23)),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Container(
-                                  padding: EdgeInsets.only(bottom: 1),
-                                  decoration: BoxDecoration(
+                                  padding: const EdgeInsets.only(bottom: 1),
+                                  decoration: const BoxDecoration(
                                     border: Border(
                                       bottom: BorderSide(
                                           width: 1.0, color: Colors.black),
@@ -97,12 +100,11 @@ class _RegisterPageState extends State<RegisterPage> {
                                   //     style: TextStyle(
                                   //         fontFamily: "Metrisch-ExtraBold", fontSize: 23)),
                                 ),
-
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 Row(
-                                  children: [
+                                  children: const [
                                     FaIcon(
                                       FontAwesomeIcons.facebookF,
                                       size: 18,
@@ -118,7 +120,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                         size: 18),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 130,
                                 )
                               ],
@@ -129,10 +131,10 @@ class _RegisterPageState extends State<RegisterPage> {
                                     : MediaQuery.of(context).size.width > 1150
                                         ? 300
                                         : 0,
-                                child: Image(
+                                child: const Image(
                                     image: AssetImage(
                                         "assets/registerpageimg.png"))),
-                            RegisterCard(),
+                            const RegisterCard(),
                           ],
                         ),
                       ),
@@ -149,7 +151,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: SingleChildScrollView(
                   child: Container(
                     width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -159,8 +161,8 @@ class _RegisterPageState extends State<RegisterPage> {
                           // crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              padding: EdgeInsets.only(top: 20),
-                              child: Image(
+                              padding: const EdgeInsets.only(top: 20),
+                              child: const Image(
                                 height: 100,
                                 image: AssetImage(
                                   "assets/logo1.png",
@@ -168,21 +170,21 @@ class _RegisterPageState extends State<RegisterPage> {
                                 fit: BoxFit.fill,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
-                            Text("JustDM \nThe Dilvery Machine",
+                            const Text("JustDM \nThe Dilvery Machine",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     height: 1.3,
                                     fontFamily: "Metrisch-ExtraBold",
                                     fontSize: 30)),
-                            SizedBox(
+                            const SizedBox(
                               height: 25,
                             ),
                             Container(
                               width: 250,
-                              child: Text(
+                              child: const Text(
                                 "Just Delivery Machine. \nBe it Emergency, laziness or you being busy. But order vale bhaiya will call you and say Gate pe aajao, AND You can’t. \nWait we can; le aaye kya? Bolo",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
@@ -192,7 +194,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                     color: Colors.black54),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 25,
                             ),
 
@@ -204,7 +206,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         Stack(
                           alignment: Alignment.center,
                           clipBehavior: Clip.none,
-                          children: [
+                          children: const [
                             // Container(
                             //     height:
                             //     MediaQuery.of(context).size.height / 1.2,
@@ -215,7 +217,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             RegisterCard(),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                       ],
