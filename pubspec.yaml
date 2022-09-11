@@ -1,5 +1,5 @@
-name: e_commerce_flutter
-description: A new Flutter project.
+name: JustDM
+description: Get anything from anywhere right at your doorstep
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -16,7 +16,6 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
-
 environment:
   sdk: ">=2.16.2 <3.0.0"
 
@@ -44,6 +43,11 @@ dependencies:
   responsive_builder: ^0.2.0+2
   flutter_spinkit: ^5.1.0
   toggle_switch: ^2.0.1
+  firebase:
+  cloud_firestore:
+  shared_preferences: any
+  fluttertoast: any
+
 
 dev_dependencies:
   flutter_lints: ^1.0.4

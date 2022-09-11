@@ -11,11 +11,12 @@ class StoreSelect extends StatefulWidget {
 
   @override
   _StoreSelectState createState() => _StoreSelectState();
-
 }
 
 
 const kAnimationDuration = Duration(milliseconds: 200);
+int col1 = 0;
+
 class _StoreSelectState extends State<StoreSelect> {
 
   static const kPrimaryColor = Color(0xff59b24d);
