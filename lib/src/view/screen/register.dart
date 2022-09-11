@@ -1,16 +1,15 @@
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-import 'LoginPageElements/LoginCard.dart';
+import 'RegisterPageElements/LoginCard.dart';
 
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,10 +123,14 @@ class _LoginPageState extends State<LoginPage> {
                               ],
                             ),
                             Container(
-                                height:MediaQuery.of(context).size.width>1300?400:MediaQuery.of(context).size.width>1150?300:0,
+                                height: MediaQuery.of(context).size.width > 1300
+                                    ? 400
+                                    : MediaQuery.of(context).size.width > 1150
+                                        ? 300
+                                        : 0,
                                 child: Image(
                                     image: AssetImage(
-                                        "assets/loginpageimg.png"))),
+                                        "assets/RegisterPageimg.png"))),
                             LoginCard(),
                           ],
                         ),
@@ -207,7 +210,7 @@ class _LoginPageState extends State<LoginPage> {
                             //     child: Image(
                             //         fit: BoxFit.cover,
                             //         image:
-                            //         AssetImage("assets/loginpageimg.png"))),
+                            //         AssetImage("assets/RegisterPageimg.png"))),
                             LoginCard(),
                           ],
                         ),

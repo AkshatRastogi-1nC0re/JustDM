@@ -1,6 +1,6 @@
 import 'package:JustDM/core/app_theme.dart';
 import 'package:JustDM/src/view/screen/home_screen.dart';
-import 'package:JustDM/src/view/screen/login.dart';
+import 'package:JustDM/src/view/screen/register.dart';
 import 'package:JustDM/src/view/screen/storeselect.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: StoreSelect(),
+      home: RegisterPage(),
       theme: AppTheme.lightAppTheme,
     );
   }
