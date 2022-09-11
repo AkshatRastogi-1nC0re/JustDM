@@ -1,7 +1,7 @@
-import 'package:e_commerce_flutter/core/app_theme.dart';
-import 'package:e_commerce_flutter/src/view/screen/home_screen.dart';
-import 'package:e_commerce_flutter/src/view/screen/login.dart';
-import 'package:e_commerce_flutter/src/view/screen/storeselect.dart';
+import 'package:JustDM/core/app_theme.dart';
+import 'package:JustDM/src/view/screen/home_screen.dart';
+import 'package:JustDM/src/view/screen/login.dart';
+import 'package:JustDM/src/view/screen/storeselect.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

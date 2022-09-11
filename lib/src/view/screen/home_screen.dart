@@ -1,6 +1,6 @@
 import 'package:animations/animations.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-import 'package:e_commerce_flutter/src/view/screen/profile_screen.dart';
+import 'package:JustDM/src/view/screen/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/app_data.dart';
