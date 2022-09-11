@@ -1,8 +1,10 @@
+import 'package:JustDM/src/model/product1.dart';
 import 'package:JustDM/src/view/screen/CartElements/longproductcard.dart';
 import 'package:JustDM/src/view/screen/constants.dart';
 import 'package:JustDM/src/view/screen/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 class Cart extends StatefulWidget {
@@ -14,12 +16,16 @@ class Cart extends StatefulWidget {
 
 class _CartState extends State<Cart> {
   FocusNode focusNode = FocusNode();
+  dynamic argumentData = Get.arguments;
+
+  List<Product1> cartitems = [];
 
   late Razorpay _razorpay;
 
   @override
   void initState() {
     super.initState();
+    cartitems = argumentData[0];
     _razorpay = Razorpay();
     _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
     _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
@@ -67,15 +73,13 @@ class _CartState extends State<Cart> {
     //     msg: "EXTERNAL_WALLET: " + response.walletName, timeInSecForIos: 4);
   }
 
-
-
   @override
-  int quantity=1;
-  int totalprice=100;
+  int quantity = 1;
+  int totalprice = 100;
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        height:MediaQuery.of(context).size.height,
+        height: MediaQuery.of(context).size.height,
         child: Stack(
           children: [
             SingleChildScrollView(
@@ -94,15 +98,11 @@ class _CartState extends State<Cart> {
                         style: TextStyle(fontSize: 14),
                         focusNode: focusNode,
                         textInputAction: TextInputAction.search,
-                        onChanged: (value) {
-
-                        },
-                        onSubmitted: (value) {
-
-                        },
+                        onChanged: (value) {},
+                        onSubmitted: (value) {},
                         decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 16),
+                            contentPadding:
+                                const EdgeInsets.symmetric(vertical: 16),
                             // horizontal: getProportionateScreenHeight(20),
                             border: InputBorder.none,
                             focusedBorder: InputBorder.none,
@@ -111,34 +111,62 @@ class _CartState extends State<Cart> {
                             hintStyle: TextStyle(
                               fontSize: getProportionateScreenHeight(14),
                             ),
-                            prefixIcon: Icon(Icons.search,
-                                size: (18))),
+                            prefixIcon: const Icon(Icons.search, size: (18))),
                       ),
                     ),
                   ),
-                  SizedBox(height: 20,),
-                  LongProductCard(title: "Paneer Wrap",productimgname: "wrap.png",price: r"45",width: 100,),
-                  SizedBox(height: 20,),
-                  LongProductCard(title: "Paneer Wrap",productimgname: "wrap.png",price: r"45",width: 100,),
-                  SizedBox(height: 20,),
-                  LongProductCard(title: "Paneer Wrap",productimgname: "wrap.png",price: r"45",width: 100,),
-                  SizedBox(height: 20,),
-                  LongProductCard(title: "Paneer Wrap",productimgname: "wrap.png",price: r"45",width: 100,),
-                  SizedBox(height: 130,),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  LongProductCard(
+                    title: "Paneer Wrap",
+                    productimgname: "wrap.png",
+                    price: r"45",
+                    width: 100,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  LongProductCard(
+                    title: "Paneer Wrap",
+                    productimgname: "wrap.png",
+                    price: r"45",
+                    width: 100,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  LongProductCard(
+                    title: "Paneer Wrap",
+                    productimgname: "wrap.png",
+                    price: r"45",
+                    width: 100,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  LongProductCard(
+                    title: "Paneer Wrap",
+                    productimgname: "wrap.png",
+                    price: r"45",
+                    width: 100,
+                  ),
+                  SizedBox(
+                    height: 130,
+                  ),
                 ],
               ),
             ),
             Positioned(
               bottom: 0,
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                decoration: BoxDecoration(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                decoration: const BoxDecoration(
                     color: Color(0xffcb7c0c),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20),
                       topRight: Radius.circular(20),
-                    )
-                ),
+                    )),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -147,13 +175,13 @@ class _CartState extends State<Cart> {
                       children: [
                         Text(
                           "$quantity Item",
-                          style: TextStyle(
-                              fontSize: (12),
-                              color: Colors.white),
+                          style: TextStyle(fontSize: (12), color: Colors.white),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        SizedBox(height: 5,),
+                        SizedBox(
+                          height: 5,
+                        ),
                         Text(
                           "\₹$totalprice",
                           style: const TextStyle(
@@ -165,29 +193,28 @@ class _CartState extends State<Cart> {
                       ],
                     ),
                     GestureDetector(
-                      onTap: (){
-                        print("sbs");
+                      onTap: () {
                         openCheckout();
-
                       },
                       child: Row(
-                        children: [
+                        children: const [
                           Text(
                             "Payment",
-                            style: TextStyle(
-                                fontSize: (17),
-                                color: Colors.white),
+                            style:
+                                TextStyle(fontSize: (17), color: Colors.white),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
-                          Icon(Icons.arrow_right,size: 30,color: Colors.white,)
+                          Icon(
+                            Icons.arrow_right,
+                            size: 30,
+                            color: Colors.white,
+                          )
                         ],
                       ),
                     ),
-
                   ],
                 ),
-
                 height: 80,
                 width: MediaQuery.of(context).size.width,
               ),

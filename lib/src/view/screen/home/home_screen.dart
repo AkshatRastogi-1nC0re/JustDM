@@ -365,7 +365,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            Get.offAll(const Cart());
+                            Get.offAll(const Cart(), arguments: [
+                              controller.cartProducts,
+                              controller.totalPrice.value
+                            ]);
                           },
                           child: Text(
                             "View Cart",
