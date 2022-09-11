@@ -98,6 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                                   //     style: TextStyle(
                                   //         fontFamily: "Metrisch-ExtraBold", fontSize: 23)),
                                 ),
+
                                 SizedBox(
                                   height: 20,
                                 ),
