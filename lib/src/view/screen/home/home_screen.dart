@@ -1,5 +1,6 @@
 
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
@@ -15,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   FocusNode focusNode = FocusNode();
+  int _index = 0;
   int quantity=1;
   int totalprice=100;
   @override
@@ -62,7 +64,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 CarouselSlider(
-                  options: CarouselOptions(height: 200.0,viewportFraction: 1,),
+
+                  options: CarouselOptions(
+                      autoPlay: true,
+                    height: 200.0,viewportFraction: 1,
+                    onPageChanged:(int i, carouselPageChangedReason) {
+                      setState(() {
+                        _index = i;
+                      });
+                    }
+                  ),
                   items: ["maggihotspot.jpg","maggihotspot.jpg"].map((i) {
                     return Builder(
                       builder: (BuildContext context) {
@@ -80,6 +91,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                     );
                   }).toList(),
+                ),
+                Center(
+                  child: DotsIndicator(
+                    dotsCount: 2,
+                    position: _index.toDouble(),
+                    decorator: DotsDecorator(
+                        size: const Size.square(5.0),
+                        activeSize: const Size(18.0, 5.0),
+                        activeShape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.0)),
+                        activeColor: kPrimaryColor),
+                  ),
                 ),
                 SizedBox(height: 20,),
                 Container(
