@@ -11,11 +11,13 @@ class LongProductCard extends StatefulWidget {
     this.productimgname = "",
     this.title = "",
     this.price = "",
+    this.isorderdone = false,
   });
   final double width, aspectRatio;
   final String productimgname;
   final String title;
   final String price;
+  final bool isorderdone;
 
   @override
   _LongProductCardState createState() => _LongProductCardState();
@@ -79,7 +81,7 @@ class _LongProductCardState extends State<LongProductCard> {
                     ],
                   ),
                 ),
-                Row(
+                widget.isorderdone==false?Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     InkWell(
@@ -120,6 +122,13 @@ class _LongProductCardState extends State<LongProductCard> {
                       ),
                     ),
                   ],
+                ):Text(
+                  " X "+quantity.toString(),
+                  style: TextStyle(
+                      fontSize: (12),
+                      color: Colors.black),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 )
               ],
             ),

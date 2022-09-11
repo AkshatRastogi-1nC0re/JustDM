@@ -115,45 +115,21 @@ class _CartState extends State<Cart> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 20,
+                  SizedBox(height: 20,),
+                  ListView.builder(
+                    shrinkWrap: true,
+                      itemCount: 8,
+                      itemBuilder: (BuildContext ctxt, int index) {
+                        return Column(
+                          children: [
+                            LongProductCard(title: "Paneer Wrap",productimgname: "wrap.png",price: r"45",width: 100,),
+                            SizedBox(height: 20,),
+                          ],
+                        );
+                      }
                   ),
-                  LongProductCard(
-                    title: "Paneer Wrap",
-                    productimgname: "wrap.png",
-                    price: r"45",
-                    width: 100,
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  LongProductCard(
-                    title: "Paneer Wrap",
-                    productimgname: "wrap.png",
-                    price: r"45",
-                    width: 100,
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  LongProductCard(
-                    title: "Paneer Wrap",
-                    productimgname: "wrap.png",
-                    price: r"45",
-                    width: 100,
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  LongProductCard(
-                    title: "Paneer Wrap",
-                    productimgname: "wrap.png",
-                    price: r"45",
-                    width: 100,
-                  ),
-                  SizedBox(
-                    height: 130,
-                  ),
+
+                  SizedBox(height: 110,),
                 ],
               ),
             ),

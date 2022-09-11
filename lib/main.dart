@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: StoreSelect(),
+      home: Cart(),
       theme: AppTheme.lightAppTheme,
     );
   }
