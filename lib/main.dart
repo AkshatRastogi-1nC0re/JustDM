@@ -1,6 +1,8 @@
 import 'package:JustDM/core/app_theme.dart';
 import 'package:JustDM/src/services/user_simple_preferences.dart';
+import 'package:JustDM/src/view/screen/home/home_screen.dart';
 import 'package:JustDM/src/view/screen/register.dart';
+import 'package:JustDM/src/view/screen/storeselect.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -16,7 +18,7 @@ void main() async {
         projectId: "justdm-f54de",
         storageBucket: "justdm-f54de.appspot.com"),
   );
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const RegisterPage(),
+      home: HomeScreen(),
       theme: AppTheme.lightAppTheme,
     );
   }

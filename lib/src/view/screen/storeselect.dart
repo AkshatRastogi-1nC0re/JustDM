@@ -19,12 +19,12 @@ class _StoreSelectState extends State<StoreSelect> {
   int currentPage = 0;
   List<Map<String, String>> splashData = [
     {
-      "text": "Welcome to JustDM, Let’s order food!",
+      "text": "Welcome to Bennett Hub, Let’s be Social!",
       "image": "assets/maggihotspot.jpg",
       "anim": ""
     },
     {
-      "text": "Feeling shy placing your order JustDM \nwill help you",
+      "text": "Feeling shy talking to others Bennett Hub \nwill help you",
       "image": "assets/images/init2.png",
       "anim": ""
     },
