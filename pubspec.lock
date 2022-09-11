@@ -90,6 +90,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.0"
+  flutter_spinkit:
+    dependency: "direct main"
+    description:
+      name: flutter_spinkit
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.1.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -144,6 +151,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.2"
+  responsive_builder:
+    dependency: "direct main"
+    description:
+      name: responsive_builder
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.0+2"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -198,6 +212,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.12"
+  toggle_switch:
+    dependency: "direct main"
+    description:
+      name: toggle_switch
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
   vector_math:
     dependency: transitive
     description:

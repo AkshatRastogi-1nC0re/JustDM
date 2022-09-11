@@ -41,6 +41,9 @@ dependencies:
   flutter_rating_bar: ^4.0.0
   font_awesome_flutter: ^10.1.0
   animations: ^2.0.3
+  responsive_builder: ^0.2.0+2
+  flutter_spinkit: ^5.1.0
+  toggle_switch: ^2.0.1
 
 dev_dependencies:
   flutter_lints: ^1.0.4
@@ -66,9 +69,27 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/
+    - assets/
   #   - images/a_dot_ham.jpeg
+  fonts:
+    - family: Montserrat-Extralight
+      fonts:
+        - asset: fonts/Montserrat-ExtraLight.ttf
 
+    - family: Montserrat-Medium
+      fonts:
+        - asset: fonts/Montserrat-Medium.ttf
+
+    - family: Metrisch-Bold
+      fonts:
+        - asset: fonts/Metrisch-Bold.otf
+
+    - family: Metrisch-Medium
+      fonts:
+        - asset: fonts/Metrisch-Medium.otf
+    - family: Metrisch-ExtraBold
+      fonts:
+        - asset: fonts/Metrisch-ExtraBold.otf
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
