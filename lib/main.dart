@@ -4,6 +4,7 @@ import 'package:JustDM/src/view/screen/cart.dart';
 import 'package:JustDM/src/view/screen/home/home_screen.dart';
 import 'package:JustDM/src/view/screen/register.dart';
 import 'package:JustDM/src/view/screen/storeselect.dart';
+import 'package:JustDM/src/view/screen/yourorders.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: YourOrders(),
       theme: AppTheme.lightAppTheme,
     );
   }
