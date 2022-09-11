@@ -24,7 +24,7 @@ class _StoreSelectState extends State<StoreSelect> {
   int currentPage = 0;
   List<Map<String, String>> splashData = [
     {"text": "Maggi Hotspot", "image": "assets/maggihotspot2.jpeg"},
-    {"text": "Kathi House", "image": "assets/selectstore/kathi1.jpeg"},
+    {"text": "Kathi House", "image": "assets/selectstore/kathi.jpeg"},
     {"text": "Chai OK", "image": "assets/selectstore/chaiok.jpeg"},
     {"text": "Quench", "image": "assets/selectstore/quech1.jpeg"},
     {"text": "Tuck Shop", "image": "assets/selectstore/tuck.jpeg"},
