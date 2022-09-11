@@ -94,13 +94,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     items: [
                       storeCode == "maggi-hotspot"
                           ? "maggihotspot1.jpeg"
-                          : "kathi1.jpeg",
+                          : "selectstore/kathi1.jpeg",
                       storeCode == "maggi-hotspot"
                           ? "maggihotspot2.jpeg"
-                          : "kathi2.jpeg",
+                          : "selectstore/kathi2.jpeg",
                       storeCode == "maggi-hotspot"
                           ? "maggihotspot4.jpg"
-                          : "kathi3.jpeg",
+                          : "selectstore/kathi3.jpeg",
                     ].map((i) {
                       return Builder(
                         builder: (BuildContext context) {
@@ -190,7 +190,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     image: AssetImage(
                       storeCode == "maggi-hotspot"
                           ? "assets/maggihotspot.jpg"
-                          : "kathi.jpeg",
+                          : "selectstore/kathi.jpeg",
                     ),
                     fit: BoxFit.fill,
                   ),
@@ -295,7 +295,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     image: AssetImage(
                       storeCode == "maggi-hotspot"
                           ? "assets/maggihotspot3.jpg"
-                          : "kathi3.jpeg",
+                          : "selectstore/kathi3.jpeg",
                     ),
                     fit: BoxFit.fill,
                   ),
