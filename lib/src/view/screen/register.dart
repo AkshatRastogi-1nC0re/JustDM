@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-import 'RegisterPageElements/LoginCard.dart';
+import 'RegisterPageElements/RegisterCard.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -131,7 +131,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 child: Image(
                                     image: AssetImage(
                                         "assets/registerpageimg.png"))),
-                            LoginCard(),
+                            RegisterCard(),
                           ],
                         ),
                       ),
@@ -211,7 +211,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             //         fit: BoxFit.cover,
                             //         image:
                             //         AssetImage("assets/RegisterPageimg.png"))),
-                            LoginCard(),
+                            RegisterCard(),
                           ],
                         ),
                         SizedBox(

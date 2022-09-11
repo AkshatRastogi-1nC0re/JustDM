@@ -7,9 +7,9 @@ import 'package:toggle_switch/toggle_switch.dart';
 
 import '../GradientButton.dart';
 
-class LoginCard extends StatefulWidget {
+class RegisterCard extends StatefulWidget {
   @override
-  _LoginCardState createState() => _LoginCardState();
+  _RegisterCardState createState() => _RegisterCardState();
 }
 
 bool loading = false;
@@ -20,7 +20,7 @@ const spinkit = SpinKitThreeInOut(
   size: 20.0,
 );
 
-class _LoginCardState extends State<LoginCard> {
+class _RegisterCardState extends State<RegisterCard> {
   final myController = TextEditingController();
   bool Hoverforgotpass = false;
   bool Hoverdonthaveaccnt = false;
