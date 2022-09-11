@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:JustDM/src/controller/register_controller.dart';
+import 'package:JustDM/src/view/screen/storeselect.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -234,7 +235,7 @@ class _RegisterCardState extends State<RegisterCard> {
                           } else {
                             controller.loading.value = true;
                             var data = {
-                              "address": hostelAddress,
+                              "address": [hostelAddress],
                               "gender": gender,
                               "mobile": mobile,
                               "name": name,
@@ -254,6 +255,8 @@ class _RegisterCardState extends State<RegisterCard> {
                               controller.loading.value = false;
                               // Get.offAllNamed(Routes.HOME);
                             });
+                            //  Navigate to next screen using getx
+                            Get.offAll(const StoreSelect());
                           }
 
                           // print(name);

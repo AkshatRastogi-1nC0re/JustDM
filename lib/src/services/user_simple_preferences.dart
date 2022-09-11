@@ -3,85 +3,42 @@ import 'package:shared_preferences/shared_preferences.dart';
 class UserSimplePreferences {
   static SharedPreferences? _preferences;
 
-  static const _keyEmail = 'email_user';
-  static const _keyUserType = 'user_type';
-  static const _keyCity = 'city_filter';
-  static const _keyCategory = 'category';
-  static const _keyUserName = 'user_name';
-  static const _keyPhoneNum = 'phnum';
-  static const _keyVerify = 'verify';
-  static const _keyImagePath = 'imgpath';
-  static const _keyImagelink = 'image_link';
-  static const _keyAuth = 'authkey';
-  static const _keyUserPhone = 'userphone';
-  static const _keyIsFirst = 'isFirst';
-  static const _keyIsFirst1 = 'isFirst1';
+  static const _keyName = 'user_name';
+  static const _keyPhone = 'user_phone';
+  static const _keyDefaultAddress = 'user_address';
+  static const _keyGender = 'user_gender';
+  static const _keyInfoAvailable = 'information_available';
 
   static Future init() async =>
       _preferences = await SharedPreferences.getInstance();
 
-  static Future setAuthKey(String status) async =>
-      await _preferences?.setString(_keyAuth, status);
-
-  static String? getAuthKey() => _preferences?.getString(_keyAuth);
-
-  static Future setUserType(String status) async =>
-      await _preferences?.setString(_keyUserType, status);
-
-  static String? getUserType() => _preferences?.getString(_keyUserType);
-
-  static Future setUserPhnum(String status) async =>
-      await _preferences?.setString(_keyUserPhone, status);
-
-  static String? getUserPhnum() => _preferences?.getString(_keyUserPhone);
-
-  static Future setImageLink(String link) async =>
-      await _preferences?.setString(_keyImagelink, link);
-
-  static String? getImageLink() => _preferences?.getString(_keyImagelink);
-
-  static Future setEmail(String email) async =>
-      await _preferences?.setString(_keyEmail, email);
-
-  static String? getEmail() => _preferences?.getString(_keyEmail);
-
-  static Future setFirst(String status) async =>
-      await _preferences?.setString(_keyIsFirst, status);
-
-  static String? getFirst() => _preferences?.getString(_keyIsFirst);
-
-  static Future setisFirst1(String status) async =>
-      await _preferences?.setString(_keyIsFirst1, status);
-
-  static String? getisFirst1() => _preferences?.getString(_keyIsFirst1);
-
-  static Future setCity(String city) async =>
-      await _preferences?.setString(_keyCity, city);
-
-  static String? getCity() => _preferences?.getString(_keyCity);
-
-  static Future setCategory(String cat) async =>
-      await _preferences?.setString(_keyCategory, cat);
-
-  static String? getCategory() => _preferences?.getString(_keyCategory);
-
   static Future setUserName(String name) async =>
-      await _preferences?.setString(_keyUserName, name);
+      await _preferences!.setString(_keyName, name);
+  static String? getUserName() => _preferences?.getString(_keyName);
 
-  static String? getUserName() => _preferences?.getString(_keyUserName);
+  static Future setUserPhone(String phone) async =>
+      await _preferences!.setString(_keyPhone, phone);
+  static String? getUserPhone() => _preferences?.getString(_keyPhone);
 
-  static Future setphonenumber(String phnum) async =>
-      await _preferences?.setString(_keyPhoneNum, phnum);
+  static Future setUserAddress(String address) async =>
+      await _preferences!.setString(_keyDefaultAddress, address);
+  static String? getUserAddress() =>
+      _preferences?.getString(_keyDefaultAddress);
 
-  static String? getphonenumber() => _preferences?.getString(_keyPhoneNum);
+  static Future setUserGender(String gender) async =>
+      await _preferences!.setString(_keyGender, gender);
+  static String? getUserGender() => _preferences?.getString(_keyGender);
 
-  static Future setVerifyStatus(String vf) async =>
-      await _preferences?.setString(_keyVerify, vf);
+  static Future setInfoAvailable(bool infoAvailable) async =>
+      await _preferences!.setBool(_keyInfoAvailable, infoAvailable);
+  static bool? getInfoAvailable() => _preferences?.getBool(_keyInfoAvailable);
 
-  static String? getVerifyStatus() => _preferences?.getString(_keyVerify);
-
-  static Future setImagePath(String ip) async =>
-      await _preferences?.setString(_keyImagePath, ip);
-
-  static String? getImagePath() => _preferences?.getString(_keyImagePath);
+  Future<bool> saveUserData(data) async {
+    await setUserName(data['name']);
+    await setUserPhone(data['mobile']);
+    await setUserAddress(data['address'][0]);
+    await setUserGender(data['gender']);
+    await setInfoAvailable(true);
+    return true;
+  }
 }
