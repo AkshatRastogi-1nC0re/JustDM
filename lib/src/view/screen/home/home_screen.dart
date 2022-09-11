@@ -1,6 +1,7 @@
 import 'package:JustDM/src/controller/product_controller.dart';
 import 'package:JustDM/src/view/screen/cart.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   dynamic argumentData = Get.arguments;
   String storeCode = "";
   FocusNode focusNode = FocusNode();
+  int _index = 0;
 
   @override
   void initState() {
@@ -72,10 +74,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 CarouselSlider(
                   options: CarouselOptions(
-                    height: 200.0,
-                    viewportFraction: 1,
+                      autoPlay: true,
+                      height: 300.0,viewportFraction: 1,
+                      onPageChanged:(int i, carouselPageChangedReason) {
+                        setState(() {
+                          _index = i;
+                        });
+                      }
                   ),
-                  items: ["maggihotspot.jpg", "maggihotspot.jpg"].map((i) {
+                  items: ["maggihotspot1.jpeg", "maggihotspot2.jpeg","maggihotspot4.jpg"].map((i) {
                     return Builder(
                       builder: (BuildContext context) {
                         return Container(
@@ -92,6 +99,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                     );
                   }).toList(),
+                ),
+                Center(
+                  child: DotsIndicator(
+                    dotsCount: 3,
+                    position: _index.toDouble(),
+                    decorator: DotsDecorator(
+                        size: const Size.square(5.0),
+                        activeSize: const Size(18.0, 5.0),
+                        activeShape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.0)),
+                        activeColor: kPrimaryColor),
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
@@ -251,7 +270,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Image(
                   width: MediaQuery.of(context).size.width,
                   image: const AssetImage(
-                    "assets/maggihotspot.jpg",
+                    "assets/maggihotspot3.jpeg",
                   ),
                   fit: BoxFit.fill,
                 ),
