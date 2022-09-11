@@ -1,5 +1,5 @@
-import 'package:e_commerce_flutter/core/extensions.dart';
-import 'package:e_commerce_flutter/src/view/widget/animated_switcher_wrapper.dart';
+import 'package:JustDM/core/extensions.dart';
+import 'package:JustDM/src/view/widget/animated_switcher_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controller/product_controller.dart';

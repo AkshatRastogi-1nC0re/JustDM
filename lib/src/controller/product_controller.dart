@@ -1,4 +1,4 @@
-import 'package:e_commerce_flutter/core/extensions.dart';
+import 'package:JustDM/core/extensions.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
