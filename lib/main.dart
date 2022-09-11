@@ -1,5 +1,6 @@
 import 'package:JustDM/core/app_theme.dart';
 import 'package:JustDM/src/services/user_simple_preferences.dart';
+import 'package:JustDM/src/view/screen/cart.dart';
 import 'package:JustDM/src/view/screen/home/home_screen.dart';
 import 'package:JustDM/src/view/screen/register.dart';
 import 'package:JustDM/src/view/screen/storeselect.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: Cart(),
       theme: AppTheme.lightAppTheme,
     );
   }
