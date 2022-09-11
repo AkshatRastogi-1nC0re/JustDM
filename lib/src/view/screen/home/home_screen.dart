@@ -1,6 +1,7 @@
 import 'package:JustDM/src/controller/product_controller.dart';
 import 'package:JustDM/src/view/screen/cart.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -71,19 +72,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 CarouselSlider(
-                  options: CarouselOptions(
-                    height: 200.0,
-                    viewportFraction: 1,
-                  ),
-                  items: ["maggihotspot.jpg", "maggihotspot.jpg"].map((i) {
-                    return Builder(
-                      builder: (BuildContext context) {
                         return Container(
                           width: MediaQuery.of(context).size.width,
                           child: Image(
-                            height: MediaQuery.of(context).size.height,
                             width: MediaQuery.of(context).size.width,
-                            image: AssetImage(
                               "assets/$i",
                             ),
                             fit: BoxFit.fill,
@@ -91,11 +83,20 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       },
                     );
-                  }).toList(),
                 ),
-                const SizedBox(
-                  height: 20,
+                Center(
+                  child: DotsIndicator(
+                    dotsCount: 2,
+                    position: _index.toDouble(),
+                    decorator: DotsDecorator(
+                        size: const Size.square(5.0),
+                        activeSize: const Size(18.0, 5.0),
+                        activeShape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.0)),
+                        activeColor: kPrimaryColor),
+                  ),
                 ),
+                SizedBox(height: 20,),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: const Text(
