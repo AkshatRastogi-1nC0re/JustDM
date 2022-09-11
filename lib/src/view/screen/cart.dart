@@ -51,7 +51,6 @@ class _CartState extends State<Cart> {
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     // Do something when payment succeeds
-    print(response);
     verifySignature(
       signature: response.signature,
       paymentId: response.paymentId,
@@ -60,7 +59,6 @@ class _CartState extends State<Cart> {
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
-    print(response);
     // Do something when payment fails
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -70,7 +68,6 @@ class _CartState extends State<Cart> {
   }
 
   void _handleExternalWallet(ExternalWalletResponse response) {
-    print(response);
     // Do something when an external wallet is selected
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -104,7 +101,6 @@ class _CartState extends State<Cart> {
     if (res.statusCode == 200) {
       openGateway(jsonDecode(res.body)['id']);
     }
-    print(res.body);
   }
 
   openGateway(String orderId) {
@@ -150,8 +146,6 @@ class _CartState extends State<Cart> {
       },
       body: formData,
     );
-
-    print(res.body);
     if (res.statusCode == 200) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -172,7 +166,7 @@ class _CartState extends State<Cart> {
               child: Column(
                 children: [
                   Container(
-                    margin: EdgeInsets.all(20),
+                    margin: const EdgeInsets.all(20),
                     width: MediaQuery.of(context).size.width,
                     height: 65,
                     decoration: BoxDecoration(
@@ -181,7 +175,7 @@ class _CartState extends State<Cart> {
                     ),
                     child: Center(
                       child: TextField(
-                        style: TextStyle(fontSize: 14),
+                        style: const TextStyle(fontSize: 14),
                         focusNode: focusNode,
                         textInputAction: TextInputAction.search,
                         onChanged: (value) {},
@@ -201,7 +195,7 @@ class _CartState extends State<Cart> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   ListView.builder(
@@ -216,7 +210,7 @@ class _CartState extends State<Cart> {
                               price: cartitems[index].price.toString(),
                               width: 100,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                           ],
@@ -246,11 +240,12 @@ class _CartState extends State<Cart> {
                       children: [
                         Text(
                           "${cartitems.length} Items",
-                          style: TextStyle(fontSize: (12), color: Colors.white),
+                          style: const TextStyle(
+                              fontSize: (12), color: Colors.white),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 5,
                         ),
                         Text(
