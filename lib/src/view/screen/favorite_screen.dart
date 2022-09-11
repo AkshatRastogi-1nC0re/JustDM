@@ -9,7 +9,7 @@ class FavoriteScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "bjjikkjbkjbkbkj",
+          "Favorites",
           style: Theme.of(context).textTheme.headline1,
         ),
       ),

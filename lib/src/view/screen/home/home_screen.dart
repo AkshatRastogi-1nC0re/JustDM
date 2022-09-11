@@ -15,6 +15,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   FocusNode focusNode = FocusNode();
+  int quantity=1;
+  int totalprice=100;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,6 +85,45 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
+                    "Recently Launched",
+                    style: TextStyle(
+                      fontSize: (18),
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20,),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ProductCard(title: "Paneer Wrap",productimgname: "wrap.png",price: r"45",aspectRatio: 0.69,width: 180,),
+                      SizedBox(width: 20,),
+                      Column(
+                        children: [
+                          ProductCard(title: "Paneer Wrap",productimgname: "wrap.png",price: r"45"),
+                          SizedBox(height: 20,),
+                          ProductCard(title: "Paneer Wrap",productimgname: "wrap.png",price: r"45"),
+
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(height: 20,),
+                Image(
+                  width: MediaQuery.of(context).size.width,
+                  image: AssetImage(
+                    "assets/maggihotspot.jpg",
+                  ),
+                  fit: BoxFit.fill,
+                ),
+                SizedBox(height: 20,),
+
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
                     "Most Liked",
                     style: TextStyle(
                       fontSize: (18),
@@ -135,10 +176,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
                 SizedBox(height: 20,),
+                Image(
+                  width: MediaQuery.of(context).size.width,
+                  image: AssetImage(
+                    "assets/maggihotspot.jpg",
+                  ),
+                  fit: BoxFit.fill,
+                ),
+                SizedBox(height: 20,),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    "Recently Launched",
+                    "Must Order",
                     style: TextStyle(
                       fontSize: (18),
                       color: Colors.black,
@@ -148,22 +197,25 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(height: 20,),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ProductCard(title: "Paneer Wrap",productimgname: "wrap.png",price: r"45",aspectRatio: 0.69,width: 180,),
-                      SizedBox(width: 20,),
-                      Column(
-                        children: [
-                          ProductCard(title: "Paneer Wrap",productimgname: "wrap.png",price: r"45"),
-                          SizedBox(height: 20,),
-                          ProductCard(title: "Paneer Wrap",productimgname: "wrap.png",price: r"45"),
-
-                        ],
-                      )
-                    ],
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        ProductCard(title: "Paneer Wrap",productimgname: "wrap.png",price: r"45",),
+                        SizedBox(width: 20,),
+                        ProductCard(title: "Paneer Wrap",productimgname: "wrap.png",price: r"45",),
+                        SizedBox(width: 20,),
+                        ProductCard(title: "Paneer Wrap",productimgname: "wrap.png",price: r"45",),
+                        SizedBox(width: 20,),
+                        ProductCard(title: "Paneer Wrap",productimgname: "wrap.png",price: r"45",),
+                        SizedBox(width: 20,),
+                        ProductCard(title: "Paneer Wrap",productimgname: "wrap.png",price: r"45",),
+                      ],
+                    ),
                   ),
-                )
+                ),
+                SizedBox(height: 130,),
+
 
               ],
             ),
@@ -171,8 +223,57 @@ class _HomeScreenState extends State<HomeScreen> {
           Positioned(
             bottom: 0,
             child: Container(
-              color: Colors.red,
-              height: 100,
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              decoration: BoxDecoration(
+                  color: Color(0xffcb7c0c),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                )
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "$quantity Item",
+                        style: TextStyle(
+                            fontSize: (12),
+                            color: Colors.white),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      SizedBox(height: 5,),
+                      Text(
+                        "\₹$totalprice",
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "View Cart",
+                        style: TextStyle(
+                            fontSize: (17),
+                            color: Colors.white),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Icon(Icons.arrow_right,size: 30,color: Colors.white,)
+                    ],
+                  ),
+
+                ],
+              ),
+
+              height: 80,
               width: MediaQuery.of(context).size.width,
             ),
           )
