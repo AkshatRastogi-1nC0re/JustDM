@@ -5,7 +5,9 @@ import 'package:JustDM/src/controller/cart_controller.dart';
 import 'package:JustDM/src/model/product1.dart';
 import 'package:JustDM/src/view/screen/CartElements/longproductcard.dart';
 import 'package:JustDM/src/view/screen/constants.dart';
+import 'package:JustDM/src/view/screen/home/home_screen.dart';
 import 'package:JustDM/src/view/screen/size_config.dart';
+import 'package:JustDM/src/view/screen/storeselect.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -157,135 +159,141 @@ class _CartState extends State<Cart> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        child: Stack(
-          children: [
-            SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.all(20),
-                    width: MediaQuery.of(context).size.width,
-                    height: 65,
-                    decoration: BoxDecoration(
-                      color: kSecondaryColor.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Center(
-                      child: TextField(
-                        style: const TextStyle(fontSize: 14),
-                        focusNode: focusNode,
-                        textInputAction: TextInputAction.search,
-                        onChanged: (value) {},
-                        onSubmitted: (value) {},
-                        decoration: InputDecoration(
-                            contentPadding:
-                                const EdgeInsets.symmetric(vertical: 16),
-                            // horizontal: getProportionateScreenHeight(20),
-                            border: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            hintText: "Search product",
-                            hintStyle: TextStyle(
-                              fontSize: getProportionateScreenHeight(14),
-                            ),
-                            prefixIcon: const Icon(Icons.search, size: (18))),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: cartitems.length,
-                      itemBuilder: (BuildContext ctxt, int index) {
-                        return Column(
-                          children: [
-                            LongProductCard(
-                              title: cartitems[index].name,
-                              productimgname: cartitems[index].images[0],
-                              price: cartitems[index].price.toString(),
-                              width: 100,
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                          ],
-                        );
-                      }),
-                  const SizedBox(
-                    height: 110,
-                  ),
-                ],
-              ),
-            ),
-            Positioned(
-              bottom: 0,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                decoration: const BoxDecoration(
-                    color: Color(0xffcb7c0c),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                    )),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return WillPopScope(
+      onWillPop: () {
+        Get.offAll(const StoreSelect());
+        return Future.value(false);
+      },
+      child: Scaffold(
+        body: Container(
+          height: MediaQuery.of(context).size.height,
+          child: Stack(
+            children: [
+              SingleChildScrollView(
+                child: Column(
                   children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "${cartitems.length} Items",
-                          style: const TextStyle(
-                              fontSize: (12), color: Colors.white),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          "\₹${totalprice}",
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          ),
-                        )
-                      ],
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        createOrder();
-                      },
-                      child: Row(
-                        children: const [
-                          Text(
-                            "Payment",
-                            style:
-                                TextStyle(fontSize: (17), color: Colors.white),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          Icon(
-                            Icons.arrow_right,
-                            size: 30,
-                            color: Colors.white,
-                          )
-                        ],
+                    Container(
+                      margin: const EdgeInsets.all(20),
+                      width: MediaQuery.of(context).size.width,
+                      height: 65,
+                      decoration: BoxDecoration(
+                        color: kSecondaryColor.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(15),
                       ),
+                      child: Center(
+                        child: TextField(
+                          style: const TextStyle(fontSize: 14),
+                          focusNode: focusNode,
+                          textInputAction: TextInputAction.search,
+                          onChanged: (value) {},
+                          onSubmitted: (value) {},
+                          decoration: InputDecoration(
+                              contentPadding:
+                                  const EdgeInsets.symmetric(vertical: 16),
+                              // horizontal: getProportionateScreenHeight(20),
+                              border: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                              hintText: "Search product",
+                              hintStyle: TextStyle(
+                                fontSize: getProportionateScreenHeight(14),
+                              ),
+                              prefixIcon: const Icon(Icons.search, size: (18))),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: cartitems.length,
+                        itemBuilder: (BuildContext ctxt, int index) {
+                          return Column(
+                            children: [
+                              LongProductCard(
+                                title: cartitems[index].name,
+                                productimgname: cartitems[index].images[0],
+                                price: cartitems[index].price.toString(),
+                                width: 100,
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                            ],
+                          );
+                        }),
+                    const SizedBox(
+                      height: 110,
                     ),
                   ],
                 ),
-                height: 80,
-                width: MediaQuery.of(context).size.width,
               ),
-            )
-          ],
+              Positioned(
+                bottom: 0,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  decoration: const BoxDecoration(
+                      color: Color(0xffcb7c0c),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
+                      )),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "${cartitems.length} Items",
+                            style: const TextStyle(
+                                fontSize: (12), color: Colors.white),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            "\₹${totalprice}",
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          )
+                        ],
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          createOrder();
+                        },
+                        child: Row(
+                          children: const [
+                            Text(
+                              "Payment",
+                              style: TextStyle(
+                                  fontSize: (17), color: Colors.white),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            Icon(
+                              Icons.arrow_right,
+                              size: 30,
+                              color: Colors.white,
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  height: 80,
+                  width: MediaQuery.of(context).size.width,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
