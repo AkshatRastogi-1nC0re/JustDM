@@ -75,14 +75,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 CarouselSlider(
                   options: CarouselOptions(
                       autoPlay: true,
-                      height: 300.0,viewportFraction: 1,
-                      onPageChanged:(int i, carouselPageChangedReason) {
+                      height: 300.0,
+                      viewportFraction: 1,
+                      onPageChanged: (int i, carouselPageChangedReason) {
                         setState(() {
                           _index = i;
                         });
-                      }
-                  ),
-                  items: ["maggihotspot1.jpeg", "maggihotspot2.jpeg","maggihotspot4.jpg"].map((i) {
+                      }),
+                  items: [
+                    "maggihotspot1.jpeg",
+                    "maggihotspot2.jpeg",
+                    "maggihotspot4.jpg"
+                  ].map((i) {
                     return Builder(
                       builder: (BuildContext context) {
                         return Container(
@@ -389,7 +393,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               controller.totalPrice.value
                             ]);
                           },
-                          child: Text(
+                          child: const Text(
                             "View Cart",
                             style:
                                 TextStyle(fontSize: (17), color: Colors.white),

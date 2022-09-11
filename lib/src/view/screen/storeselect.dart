@@ -23,11 +23,11 @@ class _StoreSelectState extends State<StoreSelect> {
 
   int currentPage = 0;
   List<Map<String, String>> splashData = [
-    {"text": "Maggi Hotspot", "image": "assets/maggihotspot.jpg"},
-    {"text": "Kathi House", "image": "assets/maggihotspot.jpg"},
-    {"text": "Chai OK", "image": "assets/maggihotspot.jpg"},
-    {"text": "Quench", "image": "assets/maggihotspot.jpg"},
-    {"text": "Tuck Shop", "image": "assets/maggihotspot.jpg"},
+    {"text": "Maggi Hotspot", "image": "assets/maggihotspot2.jpeg"},
+    {"text": "Kathi House", "image": "assets/selectstore/kathi1.jpeg"},
+    {"text": "Chai OK", "image": "assets/selectstore/chaiok.jpeg"},
+    {"text": "Quench", "image": "assets/selectstore/quech1.jpeg"},
+    {"text": "Tuck Shop", "image": "assets/selectstore/tuck.jpeg"},
   ];
 
   @override
