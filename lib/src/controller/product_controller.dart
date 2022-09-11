@@ -1,4 +1,5 @@
-import 'package:JustDM/core/extensions.dart';
+// import 'package:JustDM/core/extensions.dart';
+import 'package:JustDM/src/model/product1.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -11,10 +12,10 @@ import '../model/product_size_type.dart';
 class ProductController extends GetxController {
   RxList<Product> allProducts = AppData.products.obs;
   RxList<Product> filteredProducts = AppData.products.obs;
-  RxList<Product> cartProducts = <Product>[].obs;
+  RxList<Product1> cartProducts = <Product1>[].obs;
   RxList<ProductCategory> categories = AppData.categories.obs;
   int length = EnumToString.toList(ProductType.values).length;
-  RxInt totalPrice = 0.obs;
+  RxDouble totalPrice = 0.0.obs;
   RxInt currentBottomNavItemIndex = 0.obs;
   RxInt productImageDefaultIndex = 0.obs;
 
@@ -40,15 +41,15 @@ class ProductController extends GetxController {
     filteredProducts.refresh();
   }
 
-  void addToCart(Product product) {
-    product.quantity++;
+  void addToCart(Product1 product) {
+    // product.quantity++;
     cartProducts.add(product);
-    cartProducts.assignAll(cartProducts.distinctBy((item) => item));
+    // cartProducts.assignAll(cartProducts.distinctBy((item) => item));
     calculateTotalPrice();
   }
 
   void increaseItem(int index) {
-    Product product = cartProducts[index];
+    Product1 product = cartProducts[index];
     product.quantity++;
     calculateTotalPrice();
     update();
@@ -87,7 +88,7 @@ class ProductController extends GetxController {
   }
 
   void decreaseItem(int index) {
-    Product product = cartProducts[index];
+    Product1 product = cartProducts[index];
     if (product.quantity > 0) {
       product.quantity--;
     }
@@ -98,27 +99,23 @@ class ProductController extends GetxController {
   void calculateTotalPrice() {
     totalPrice.value = 0;
     for (var element in cartProducts) {
-      if (isPriceOff(element)) {
-        totalPrice.value += element.quantity * element.off!;
-      } else {
-        totalPrice.value += element.quantity * element.price;
-      }
+      totalPrice.value += element.quantity * element.price;
     }
   }
 
-  void switchBetweenBottomNavigationItems(int index) {
-    if (index == 0) {
-      filteredProducts.assignAll(allProducts);
-    }
-    if (index == 1) {
-      getLikedItems();
-    }
-    if (index == 2) {
-      cartProducts.assignAll(allProducts.where((item) => item.quantity > 0));
-    }
-
-    currentBottomNavItemIndex.value = index;
-  }
+  // void switchBetweenBottomNavigationItems(int index) {
+  //   if (index == 0) {
+  //     filteredProducts.assignAll(allProducts);
+  //   }
+  //   if (index == 1) {
+  //     getLikedItems();
+  //   }
+  //   if (index == 2) {
+  //     cartProducts.assignAll(allProducts.where((item) => item.quantity > 0));
+  //   }
+  //
+  //   currentBottomNavItemIndex.value = index;
+  // }
 
   void switchBetweenProductImages(int index) {
     productImageDefaultIndex.value = index;

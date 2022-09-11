@@ -26,7 +26,22 @@ class CartScreen extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       itemCount: controller.cartProducts.length,
       itemBuilder: (_, index) {
-        Product product = controller.cartProducts[index];
+        Product product = Product(
+            name: 'Samsung Galaxy A53 5G',
+            price: 460,
+            about:
+                'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+            isAvailable: true,
+            off: 300,
+            quantity: 0,
+            images: [
+              'assets/images/a53_1.png',
+              'assets/images/a53_2.png',
+              'assets/images/a53_3.png'
+            ],
+            isLiked: true,
+            rating: 1,
+            type: ProductType.mobile);
         return Container(
           margin: const EdgeInsets.only(bottom: 20),
           padding: const EdgeInsets.all(15),
@@ -144,7 +159,7 @@ class CartScreen extends StatelessWidget {
               return AnimatedSwitcherWrapper(
                 child: Text(
                   "\$${controller.totalPrice.value}",
-                  key: ValueKey<int>(controller.totalPrice.value),
+                  key: ValueKey<double>(controller.totalPrice.value),
                   style: const TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.w900,
