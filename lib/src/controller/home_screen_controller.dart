@@ -1,3 +1,5 @@
+import 'package:JustDM/core/app_data.dart';
+import 'package:JustDM/src/model/product1.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
@@ -11,6 +13,20 @@ class HomeScreenController extends GetxController {
     "Tuck Shop"
   ];
 
+  List<Product1> selectProductList(code) {
+    if (code == "maggi-hotspot") {
+      return AppData.products_maggi;
+    } else if (code == "kathi-junction") {
+      return AppData.products_maggi;
+    } else if (code == "chai-ok") {
+      return AppData.products_maggi;
+    } else if (code == "quench") {
+      return AppData.products_maggi;
+    } else {
+      return AppData.products_maggi;
+    }
+  }
+
   List<String> storeCodes = [
     "maggi-hotspot",
     "kathi-junction",
@@ -18,17 +34,4 @@ class HomeScreenController extends GetxController {
     "quench",
     "tuck-shop"
   ];
-
-  void changePage(int index) {
-    currentPage.value = index;
-    update();
-  }
-
-  String getCurrentStoreName() {
-    return storeNames[currentPage.value];
-  }
-
-  String getCurrentStoreCode() {
-    return storeCodes[currentPage.value];
-  }
 }

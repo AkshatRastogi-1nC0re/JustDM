@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
-
 class LongProductCard extends StatefulWidget {
-
   const LongProductCard({
     this.width = 150,
     this.aspectRatio = 1.5,
@@ -25,7 +23,7 @@ class LongProductCard extends StatefulWidget {
 
 class _LongProductCardState extends State<LongProductCard> {
   @override
-  int quantity=1;
+  int quantity = 1;
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20),
@@ -40,16 +38,18 @@ class _LongProductCardState extends State<LongProductCard> {
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Image(
-                height:MediaQuery.of(context).size.height,
+                height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
-                image: AssetImage(
-                  "assets/${widget.productimgname}",
+                image: NetworkImage(
+                  "${widget.productimgname}",
                 ),
                 fit: BoxFit.fill,
               ),
             ),
           ),
-          SizedBox(height: 5,),
+          SizedBox(
+            height: 5,
+          ),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -63,13 +63,13 @@ class _LongProductCardState extends State<LongProductCard> {
                     children: [
                       Text(
                         widget.title,
-                        style: TextStyle(
-                            fontSize: (12),
-                            color: Colors.black),
+                        style: TextStyle(fontSize: (12), color: Colors.black),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Text(
                         "\₹${widget.price}",
                         style: const TextStyle(
@@ -81,55 +81,59 @@ class _LongProductCardState extends State<LongProductCard> {
                     ],
                   ),
                 ),
-                widget.isorderdone==false?Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    InkWell(
-                      borderRadius: BorderRadius.circular(50),
-                      onTap: () {
-                        setState(() {
-
-                        });
-                      },
-                      child: Container(
-                        height: (20),
-                        width: (20),
-                        child: Icon(Icons.add,size: 15,),
-                      ),
-                    ),
-                    SizedBox(width: 8,),
-                    Text(
-                      quantity.toString(),
-                      style: TextStyle(
-                          fontSize: (12),
-                          color: Colors.black),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    SizedBox(width: 8,),
-                    InkWell(
-                      borderRadius: BorderRadius.circular(50),
-                      onTap: () {
-                        setState(() {
-
-                        });
-                      },
-
-                      child: Container(
-                        height: (20),
-                        width: (20),
-                        child: Icon(Icons.remove,size: 15,),
-                      ),
-                    ),
-                  ],
-                ):Text(
-                  " X "+quantity.toString(),
-                  style: TextStyle(
-                      fontSize: (12),
-                      color: Colors.black),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                )
+                widget.isorderdone == false
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          InkWell(
+                            borderRadius: BorderRadius.circular(50),
+                            onTap: () {
+                              setState(() {});
+                            },
+                            child: Container(
+                              height: (20),
+                              width: (20),
+                              child: Icon(
+                                Icons.add,
+                                size: 15,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            quantity.toString(),
+                            style:
+                                TextStyle(fontSize: (12), color: Colors.black),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          InkWell(
+                            borderRadius: BorderRadius.circular(50),
+                            onTap: () {
+                              setState(() {});
+                            },
+                            child: Container(
+                              height: (20),
+                              width: (20),
+                              child: Icon(
+                                Icons.remove,
+                                size: 15,
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    : Text(
+                        " X " + quantity.toString(),
+                        style: TextStyle(fontSize: (12), color: Colors.black),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      )
               ],
             ),
           ),

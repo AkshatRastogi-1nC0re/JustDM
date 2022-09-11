@@ -1,4 +1,5 @@
 import 'package:JustDM/src/controller/product_controller.dart';
+import 'package:JustDM/src/model/product1.dart';
 import 'package:JustDM/src/view/screen/cart.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
@@ -22,10 +23,12 @@ class _HomeScreenState extends State<HomeScreen> {
   String storeCode = "";
   FocusNode focusNode = FocusNode();
   int _index = 0;
+  List<Product1> productList = [];
 
   @override
   void initState() {
     storeCode = argumentData[0];
+    productList = controller.selectProductList(storeCode);
     super.initState();
   }
 
@@ -137,10 +140,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const ProductCard(
-                        title: "Paneer Wrap",
-                        productimgname: "wrap.png",
-                        price: r"45",
+                      ProductCard(
+                        title: productList[0].name.toString(),
+                        productimgname: productList[0].images[0],
+                        price: productList[0].price.toString(),
                         aspectRatio: 0.69,
                         width: 180,
                       ),
@@ -148,18 +151,20 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: 20,
                       ),
                       Column(
-                        children: const [
+                        children: [
                           ProductCard(
-                              title: "Paneer Wrap",
-                              productimgname: "wrap.png",
-                              price: r"45"),
+                            title: productList[1].name.toString(),
+                            productimgname: productList[1].images[0],
+                            price: productList[1].price.toString(),
+                          ),
                           SizedBox(
                             height: 20,
                           ),
                           ProductCard(
-                              title: "Paneer Wrap",
-                              productimgname: "wrap.png",
-                              price: r"45"),
+                            title: productList[2].name.toString(),
+                            productimgname: productList[2].images[0],
+                            price: productList[2].price.toString(),
+                          ),
                         ],
                       )
                     ],
@@ -199,19 +204,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: MediaQuery.of(context).size.width,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: const [
+                        children: [
                           ProductCard(
-                            title: "Paneer Wrap",
-                            productimgname: "wrap.png",
-                            price: r"45",
+                            title: productList[3].name.toString(),
+                            productimgname: productList[3].images[0],
+                            price: productList[3].price.toString(),
                           ),
                           SizedBox(
                             width: 20,
                           ),
                           ProductCard(
-                            title: "Paneer Wrap",
-                            productimgname: "wrap.png",
-                            price: r"45",
+                            title: productList[4].name.toString(),
+                            productimgname: productList[4].images[0],
+                            price: productList[4].price.toString(),
                           ),
                         ],
                       ),
@@ -224,19 +229,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: MediaQuery.of(context).size.width,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: const [
+                        children: [
                           ProductCard(
-                            title: "Paneer Wrap",
-                            productimgname: "wrap.png",
-                            price: r"45",
+                            title: productList[5].name.toString(),
+                            productimgname: productList[5].images[0],
+                            price: productList[5].price.toString(),
                           ),
                           SizedBox(
                             width: 20,
                           ),
                           ProductCard(
-                            title: "Paneer Wrap",
-                            productimgname: "wrap.png",
-                            price: r"45",
+                            title: productList[6].name.toString(),
+                            productimgname: productList[6].images[0],
+                            price: productList[6].price.toString(),
                           ),
                         ],
                       ),
@@ -249,19 +254,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: MediaQuery.of(context).size.width,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: const [
+                        children: [
                           ProductCard(
-                            title: "Paneer Wrap",
-                            productimgname: "wrap.png",
-                            price: r"45",
+                            title: productList[7].name.toString(),
+                            productimgname: productList[7].images[0],
+                            price: productList[7].price.toString(),
                           ),
                           SizedBox(
                             width: 20,
                           ),
                           ProductCard(
-                            title: "Paneer Wrap",
-                            productimgname: "wrap.png",
-                            price: r"45",
+                            title: productList[8].name.toString(),
+                            productimgname: productList[8].images[0],
+                            price: productList[8].price.toString(),
                           ),
                         ],
                       ),
@@ -299,43 +304,43 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                      children: const [
+                      children: [
                         ProductCard(
-                          title: "Paneer Wrap",
-                          productimgname: "wrap.png",
-                          price: r"45",
+                          title: productList[9].name.toString(),
+                          productimgname: productList[9].images[0],
+                          price: productList[9].price.toString(),
                         ),
                         SizedBox(
                           width: 20,
                         ),
                         ProductCard(
-                          title: "Paneer Wrap",
-                          productimgname: "wrap.png",
-                          price: r"45",
+                          title: productList[10].name.toString(),
+                          productimgname: productList[10].images[0],
+                          price: productList[10].price.toString(),
                         ),
                         SizedBox(
                           width: 20,
                         ),
                         ProductCard(
-                          title: "Paneer Wrap",
-                          productimgname: "wrap.png",
-                          price: r"45",
+                          title: productList[11].name.toString(),
+                          productimgname: productList[11].images[0],
+                          price: productList[11].price.toString(),
                         ),
                         SizedBox(
                           width: 20,
                         ),
                         ProductCard(
-                          title: "Paneer Wrap",
-                          productimgname: "wrap.png",
-                          price: r"45",
+                          title: productList[12].name.toString(),
+                          productimgname: productList[12].images[0],
+                          price: productList[12].price.toString(),
                         ),
                         SizedBox(
                           width: 20,
                         ),
                         ProductCard(
-                          title: "Paneer Wrap",
-                          productimgname: "wrap.png",
-                          price: r"45",
+                          title: productList[13].name.toString(),
+                          productimgname: productList[13].images[0],
+                          price: productList[13].price.toString(),
                         ),
                       ],
                     ),

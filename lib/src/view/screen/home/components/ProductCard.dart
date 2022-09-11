@@ -44,8 +44,8 @@ class _ProductCardState extends State<ProductCard> {
               child: Image(
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
-                image: AssetImage(
-                  "assets/${widget.productimgname}",
+                image: NetworkImage(
+                  "${widget.productimgname}",
                 ),
                 fit: BoxFit.fill,
               ),

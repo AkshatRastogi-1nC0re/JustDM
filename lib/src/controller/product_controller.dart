@@ -19,6 +19,20 @@ class ProductController extends GetxController {
   RxInt currentBottomNavItemIndex = 0.obs;
   RxInt productImageDefaultIndex = 0.obs;
 
+  List<Product1> selectProductList(code) {
+    if (code == "maggi-hotspot") {
+      return AppData.products_maggi;
+    } else if (code == "kathi-junction") {
+      return AppData.products_maggi;
+    } else if (code == "chai-ok") {
+      return AppData.products_maggi;
+    } else if (code == "quench") {
+      return AppData.products_maggi;
+    } else {
+      return AppData.products_maggi;
+    }
+  }
+
   void filterItemsByCategory(int index) {
     for (ProductCategory element in categories) {
       element.isSelected = false;
