@@ -97,6 +97,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   //     style: TextStyle(
                                   //         fontFamily: "Metrisch-ExtraBold", fontSize: 23)),
                                 ),
+
                                 SizedBox(
                                   height: 20,
                                 ),
