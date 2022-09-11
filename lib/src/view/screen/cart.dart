@@ -19,6 +19,7 @@ class _CartState extends State<Cart> {
   dynamic argumentData = Get.arguments;
 
   List<Product1> cartitems = [];
+  double totalprice = 0.0;
 
   late Razorpay _razorpay;
 
@@ -26,6 +27,7 @@ class _CartState extends State<Cart> {
   void initState() {
     super.initState();
     cartitems = argumentData[0];
+    totalprice = argumentData[1];
     _razorpay = Razorpay();
     _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
     _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
@@ -74,8 +76,6 @@ class _CartState extends State<Cart> {
   }
 
   @override
-  int quantity = 1;
-  int totalprice = 100;
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -174,7 +174,7 @@ class _CartState extends State<Cart> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "$quantity Item",
+                          "${cartitems.length} Items",
                           style: TextStyle(fontSize: (12), color: Colors.white),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -183,7 +183,7 @@ class _CartState extends State<Cart> {
                           height: 5,
                         ),
                         Text(
-                          "\₹$totalprice",
+                          "\₹${totalprice}",
                           style: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
