@@ -1,7 +1,9 @@
+import 'package:JustDM/src/services/user_simple_preferences.dart';
+import 'package:JustDM/src/view/screen/storeselect.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-
+import 'package:get/get.dart';
 import 'RegisterPageElements/RegisterCard.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -12,6 +14,17 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  UserSimplePreferences userSimplePreferences = UserSimplePreferences();
+
+  @override
+  void initState() {
+    // bool? isDataAvailable = UserSimplePreferences.getInfoAvailable();
+    // if (isDataAvailable == true) {
+    //   Get.offAll(const StoreSelect());
+    // }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
