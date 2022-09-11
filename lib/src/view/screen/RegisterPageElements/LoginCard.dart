@@ -1,6 +1,5 @@
 import 'dart:async';
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -22,7 +21,6 @@ const spinkit = SpinKitThreeInOut(
 );
 
 class _LoginCardState extends State<LoginCard> {
-
   final myController = TextEditingController();
   bool Hoverforgotpass = false;
   bool Hoverdonthaveaccnt = false;
@@ -30,14 +28,8 @@ class _LoginCardState extends State<LoginCard> {
   String email = "";
   String password = "";
 
-
-
-
-
   @override
   Widget build(BuildContext context) {
-
-
     return Card(
       elevation: 8,
       child: Container(
@@ -146,6 +138,45 @@ class _LoginCardState extends State<LoginCard> {
             SizedBox(
               height: 7.5,
             ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                padding: EdgeInsets.only(left: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                  color: Colors.grey.shade200,
+                ),
+                height: 40,
+                child: TextField(
+                  obscureText: true,
+                  style: TextStyle(
+                      fontFamily: "Metrisch-Medium",
+                      height: 1.5,
+                      fontSize: 15,
+                      color: Colors.black54),
+                  onChanged: (value) {
+                    password = value.trim();
+                  },
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintStyle: TextStyle(
+                        fontFamily: "Metrisch-Medium",
+                        height: 1.5,
+                        fontSize: 15,
+                        color: Colors.black54),
+                    hintText: 'Hostel Address',
+                    // contentPadding:
+                    // EdgeInsets.symmetric(horizontal: 20.0),
+                    // border: OutlineInputBorder(
+                    //   borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                    // ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 7.5,
+            ),
             ToggleSwitch(
               minWidth: 90.0,
               initialLabelIndex: 1,
@@ -158,7 +189,10 @@ class _LoginCardState extends State<LoginCard> {
               animate: true,
               animationDuration: 500,
               icons: [FontAwesomeIcons.mars, FontAwesomeIcons.venus],
-              activeBgColors: [[Color(0xfff2d259)],[Color(0xffcb7c0c)]],
+              activeBgColors: [
+                [Color(0xfff2d259)],
+                [Color(0xffcb7c0c)]
+              ],
               onToggle: (index) {
                 print('switched to: $index');
               },
@@ -172,9 +206,7 @@ class _LoginCardState extends State<LoginCard> {
                     ? GradientButton(
                         title: "Continue",
                         buttonwidth: 300,
-                        onPressed: () {
-
-                        },
+                        onPressed: () {},
                       )
                     : Container(
                         height: 50,
@@ -192,7 +224,6 @@ class _LoginCardState extends State<LoginCard> {
                           child: spinkit,
                         ),
                       )),
-
           ],
         ),
       ),

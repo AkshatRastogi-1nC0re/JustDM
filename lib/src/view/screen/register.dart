@@ -130,7 +130,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                         : 0,
                                 child: Image(
                                     image: AssetImage(
-                                        "assets/RegisterPageimg.png"))),
+                                        "assets/registerpageimg.png"))),
                             LoginCard(),
                           ],
                         ),
