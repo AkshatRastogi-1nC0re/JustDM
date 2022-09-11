@@ -45,6 +45,8 @@ dependencies:
   toggle_switch: ^2.0.1
   firebase:
   cloud_firestore:
+  shared_preferences: any
+  fluttertoast: any
 
 
 dev_dependencies:
