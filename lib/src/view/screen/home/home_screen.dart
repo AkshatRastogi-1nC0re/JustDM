@@ -294,7 +294,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: MediaQuery.of(context).size.width,
                     image: AssetImage(
                       storeCode == "maggi-hotspot"
-                          ? "assets/maggihotspot3.jpg"
+                          ? "assets/maggihotspot3.jpeg"
                           : "selectstore/kathi3.jpeg",
                     ),
                     fit: BoxFit.fill,
