@@ -1,3 +1,4 @@
+import 'package:JustDM/src/controller/cart_controller.dart';
 import 'package:JustDM/src/model/product1.dart';
 import 'package:JustDM/src/view/screen/CartElements/longproductcard.dart';
 import 'package:JustDM/src/view/screen/constants.dart';
@@ -6,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
+
+final CartController controller = Get.put(CartController());
 
 class Cart extends StatefulWidget {
   const Cart({Key? key}) : super(key: key);
@@ -115,21 +118,30 @@ class _CartState extends State<Cart> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   ListView.builder(
-                    shrinkWrap: true,
-                      itemCount: 8,
+                      shrinkWrap: true,
+                      itemCount: cartitems.length,
                       itemBuilder: (BuildContext ctxt, int index) {
                         return Column(
                           children: [
-                            LongProductCard(title: "Paneer Wrap",productimgname: "wrap.png",price: r"45",width: 100,),
-                            SizedBox(height: 20,),
+                            LongProductCard(
+                              title: cartitems[index].name,
+                              productimgname: cartitems[index].images[0],
+                              price: cartitems[index].price.toString(),
+                              width: 100,
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
                           ],
                         );
-                      }
+                      }),
+                  const SizedBox(
+                    height: 110,
                   ),
-
-                  SizedBox(height: 110,),
                 ],
               ),
             ),

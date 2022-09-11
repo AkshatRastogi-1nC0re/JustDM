@@ -385,7 +385,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         GestureDetector(
                           onTap: () {
                             Get.offAll(const Cart(), arguments: [
-                              controller.cartProducts,
+                              controller.cartProducts.value,
                               controller.totalPrice.value
                             ]);
                           },
