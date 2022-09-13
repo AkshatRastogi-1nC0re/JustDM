@@ -22,4 +22,4 @@
 <img src="https://github.com/AkshatRastogi-1nC0re/JustDM/blob/main/JustDMPPt/20.png">
 <img src="https://github.com/AkshatRastogi-1nC0re/JustDM/blob/main/JustDMPPt/21.png">
 <img src="https://github.com/AkshatRastogi-1nC0re/JustDM/blob/main/JustDMPPt/22.png">
-<img src="https://github.com/AkshatRastogi-1nC0re/JustDM/blob/main/JustDMPPt/22.png">
+<img src="https://github.com/AkshatRastogi-1nC0re/JustDM/blob/main/JustDMPPt/23.png">
