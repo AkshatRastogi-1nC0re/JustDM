@@ -104,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ].map((i) {
                       return Builder(
                         builder: (BuildContext context) {
-                          return Container(
+                          return SizedBox(
                             width: MediaQuery.of(context).size.width,
                             child: Image(
                               height: MediaQuery.of(context).size.height,
@@ -169,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               productimgname: productList[1].images[0],
                               price: productList[1].price.toString(),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                             ProductCard(
@@ -224,7 +224,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               productimgname: productList[3].images[0],
                               price: productList[3].price.toString(),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 20,
                             ),
                             ProductCard(
@@ -249,7 +249,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               productimgname: productList[5].images[0],
                               price: productList[5].price.toString(),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 20,
                             ),
                             ProductCard(
@@ -274,7 +274,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               productimgname: productList[7].images[0],
                               price: productList[7].price.toString(),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 20,
                             ),
                             ProductCard(
@@ -326,7 +326,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             productimgname: productList[9].images[0],
                             price: productList[9].price.toString(),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           ProductCard(
@@ -369,6 +369,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Obx(() {
+              int x = 0;
+              for (int i = 0; i < controller.cartProducts.length; i++) {
+                x = x + controller.cartProducts[i].quantity.toInt();
+              }
               return Positioned(
                 bottom: 0,
                 child: Container(
@@ -386,7 +390,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "${controller.cartProducts.length} Items",
+                            "${x} Items",
                             style: const TextStyle(
                                 fontSize: (12), color: Colors.white),
                             maxLines: 1,
@@ -396,7 +400,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             height: 5,
                           ),
                           Text(
-                            "\₹${controller.totalPrice.value}",
+                            "₹${controller.totalPrice.value}",
                             style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
@@ -422,7 +426,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                          Icon(
+                          const Icon(
                             Icons.arrow_right,
                             size: 30,
                             color: Colors.white,
