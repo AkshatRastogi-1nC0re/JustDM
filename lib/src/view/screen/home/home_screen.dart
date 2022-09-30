@@ -334,7 +334,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             productimgname: productList[10].images[0],
                             price: productList[10].price.toString(),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           ProductCard(
@@ -342,7 +342,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             productimgname: productList[11].images[0],
                             price: productList[11].price.toString(),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           ProductCard(
@@ -350,7 +350,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             productimgname: productList[12].images[0],
                             price: productList[12].price.toString(),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           ProductCard(
