@@ -1,4 +1,7 @@
+import 'package:JustDM/src/controller/cart_controller.dart';
+import 'package:JustDM/src/controller/product_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../constants.dart';
 
@@ -7,11 +10,13 @@ class LongProductCard extends StatefulWidget {
     this.width = 150,
     this.aspectRatio = 1.5,
     this.productimgname = "",
+    this.quantity = 0,
     this.title = "",
     this.price = "",
     this.isorderdone = false,
   });
   final double width, aspectRatio;
+  final int quantity;
   final String productimgname;
   final String title;
   final String price;
@@ -21,12 +26,13 @@ class LongProductCard extends StatefulWidget {
   _LongProductCardState createState() => _LongProductCardState();
 }
 
+final CartController controller = Get.put(CartController());
+
 class _LongProductCardState extends State<LongProductCard> {
   @override
-  int quantity = 1;
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       height: 100,
       child: Row(
         children: [
@@ -41,13 +47,13 @@ class _LongProductCardState extends State<LongProductCard> {
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
                 image: NetworkImage(
-                  "${widget.productimgname}",
+                  widget.productimgname,
                 ),
                 fit: BoxFit.fill,
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Expanded(
@@ -56,22 +62,23 @@ class _LongProductCardState extends State<LongProductCard> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         widget.title,
-                        style: TextStyle(fontSize: (12), color: Colors.black),
+                        style: const TextStyle(
+                            fontSize: (12), color: Colors.black),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
-                        "\₹${widget.price}",
+                        "₹${widget.price}",
                         style: const TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w600,
@@ -88,9 +95,13 @@ class _LongProductCardState extends State<LongProductCard> {
                           InkWell(
                             borderRadius: BorderRadius.circular(50),
                             onTap: () {
+                              int index = controller.cartProducts.indexWhere(
+                                  (element) => element.name == widget.title);
+                              controller.updateCart(index,
+                                  controller.cartProducts[index].quantity + 1);
                               setState(() {});
                             },
-                            child: Container(
+                            child: const SizedBox(
                               height: (20),
                               width: (20),
                               child: Icon(
@@ -99,25 +110,41 @@ class _LongProductCardState extends State<LongProductCard> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 8,
                           ),
-                          Text(
-                            quantity.toString(),
-                            style:
-                                TextStyle(fontSize: (12), color: Colors.black),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          SizedBox(
+                          Obx(() {
+                            return Text(
+                              controller.cartProducts
+                                  .where(
+                                      (element) => element.name == widget.title)
+                                  .first
+                                  .quantity
+                                  .toString(),
+                              style: const TextStyle(
+                                  fontSize: (12), color: Colors.black),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            );
+                          }),
+                          const SizedBox(
                             width: 8,
                           ),
                           InkWell(
                             borderRadius: BorderRadius.circular(50),
                             onTap: () {
+                              int index = controller.cartProducts.indexWhere(
+                                  (element) => element.name == widget.title);
+                              var x =
+                                  controller.cartProducts[index].quantity - 1;
+                              if (x == 0) {
+                                controller.removeFromCart(index);
+                              } else {
+                                controller.updateCart(index, x);
+                              }
                               setState(() {});
                             },
-                            child: Container(
+                            child: const SizedBox(
                               height: (20),
                               width: (20),
                               child: Icon(
@@ -128,12 +155,21 @@ class _LongProductCardState extends State<LongProductCard> {
                           ),
                         ],
                       )
-                    : Text(
-                        " X " + quantity.toString(),
-                        style: TextStyle(fontSize: (12), color: Colors.black),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      )
+                    : Obx(() {
+                        return Text(
+                          " X " +
+                              controller.cartProducts
+                                  .where(
+                                      (element) => element.name == widget.title)
+                                  .first
+                                  .quantity
+                                  .toString(),
+                          style: const TextStyle(
+                              fontSize: (12), color: Colors.black),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        );
+                      })
               ],
             ),
           ),
