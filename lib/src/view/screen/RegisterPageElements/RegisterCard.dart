@@ -258,10 +258,6 @@ class _RegisterCardState extends State<RegisterCard> {
                             //  Navigate to next screen using getx
                             Get.offAll(const StoreSelect());
                           }
-
-                          // print(name);
-                          // print(mobile);
-                          // print(hostelAddress);
                         })
                     : Container(
                         height: 50,
