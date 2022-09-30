@@ -38,6 +38,8 @@ class _CartState extends State<Cart> {
     super.initState();
     cartitems = argumentData[0];
     totalprice = argumentData[1];
+    controller.cartProducts.value = cartitems;
+    controller.totalPrice.value = totalprice;
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
       _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
@@ -205,24 +207,30 @@ class _CartState extends State<Cart> {
                     const SizedBox(
                       height: 20,
                     ),
-                    ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: cartitems.length,
-                        itemBuilder: (BuildContext ctxt, int index) {
-                          return Column(
-                            children: [
-                              LongProductCard(
-                                title: cartitems[index].name,
-                                productimgname: cartitems[index].images[0],
-                                price: cartitems[index].price.toString(),
-                                width: 100,
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                            ],
-                          );
-                        }),
+                    Obx(() {
+                      return ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: controller.cartProducts.length,
+                          itemBuilder: (BuildContext ctxt, int index) {
+                            return Column(
+                              children: [
+                                LongProductCard(
+                                  title: controller.cartProducts[index].name,
+                                  productimgname:
+                                      controller.cartProducts[index].images[0],
+                                  price: controller.cartProducts[index].price
+                                      .toString(),
+                                  quantity:
+                                      controller.cartProducts[index].quantity,
+                                  width: 100,
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                              ],
+                            );
+                          });
+                    }),
                     const SizedBox(
                       height: 110,
                     ),
@@ -242,29 +250,31 @@ class _CartState extends State<Cart> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "${cartitems.length} Items",
-                            style: const TextStyle(
-                                fontSize: (12), color: Colors.white),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            "\₹${totalprice}",
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
+                      Obx(() {
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "${controller.cartProducts.length} Items",
+                              style: const TextStyle(
+                                  fontSize: (12), color: Colors.white),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                          )
-                        ],
-                      ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              "₹${controller.totalPrice.value}",
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                              ),
+                            )
+                          ],
+                        );
+                      }),
                       GestureDetector(
                         onTap: () {
                           createOrder();
