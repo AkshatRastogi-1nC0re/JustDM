@@ -1,5 +1,4 @@
 import 'package:JustDM/src/controller/product_controller.dart';
-import 'package:JustDM/src/model/product.dart';
 import 'package:JustDM/src/model/product1.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,12 +7,13 @@ import '../../constants.dart';
 
 class ProductCard extends StatefulWidget {
   const ProductCard({
+    Key? key,
     this.width = 150,
     this.aspectRatio = 1.5,
     this.productimgname = "",
     this.title = "",
     this.price = "",
-  });
+  }) : super(key: key);
   final double width, aspectRatio;
   final String productimgname;
   final String title;
@@ -26,10 +26,10 @@ class ProductCard extends StatefulWidget {
 final ProductController controller = Get.put(ProductController());
 
 class _ProductCardState extends State<ProductCard> {
-  @override
   int quantity = 0;
+  @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: widget.width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +45,7 @@ class _ProductCardState extends State<ProductCard> {
                 height: MediaQuery.of(context).size.height,
                 width: MediaQuery.of(context).size.width,
                 image: NetworkImage(
-                  "${widget.productimgname}",
+                  widget.productimgname,
                 ),
                 fit: BoxFit.fill,
               ),
@@ -67,7 +67,7 @@ class _ProductCardState extends State<ProductCard> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "\₹${widget.price}",
+                "₹${widget.price}",
                 style: const TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.w600,
@@ -80,19 +80,25 @@ class _ProductCardState extends State<ProductCard> {
                   InkWell(
                     borderRadius: BorderRadius.circular(50),
                     onTap: () {
+                      if (quantity == 0) {
+                        controller.addToCart(Product1(
+                            name: widget.title,
+                            price: double.parse(widget.price),
+                            quantity: quantity + 1,
+                            images: [widget.productimgname]));
+                      } else {
+                        int index = controller.cartProducts.indexWhere(
+                            (element) => element.name == widget.title);
+                        controller.updateCart(index, quantity + 1);
+                      }
                       setState(() {
                         quantity++;
                       });
-                      controller.addToCart(new Product1(
-                          name: widget.title,
-                          price: double.parse(widget.price),
-                          quantity: quantity,
-                          images: [widget.productimgname]));
                     },
-                    child: Container(
+                    child: const SizedBox(
                       height: (20),
                       width: (20),
-                      child: const Icon(
+                      child: Icon(
                         Icons.add,
                         size: 15,
                       ),
@@ -118,11 +124,20 @@ class _ProductCardState extends State<ProductCard> {
                           quantity--;
                         }
                       });
+                      int index = controller.cartProducts.indexWhere(
+                          (element) => element.name == widget.title);
+                      if (index != -1) {
+                        if (quantity == 0) {
+                          controller.removeFromCart(index);
+                        } else {
+                          controller.decreaseItem(index);
+                        }
+                      }
                     },
-                    child: Container(
+                    child: const SizedBox(
                       height: (20),
                       width: (20),
-                      child: const Icon(
+                      child: Icon(
                         Icons.remove,
                         size: 15,
                       ),

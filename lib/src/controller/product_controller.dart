@@ -101,6 +101,18 @@ class ProductController extends GetxController {
     }
   }
 
+  void updateCart(int index, int quantity) {
+    cartProducts[index].quantity = quantity;
+    calculateTotalPrice();
+    update();
+  }
+
+  void removeFromCart(int index) {
+    cartProducts.removeAt(index);
+    calculateTotalPrice();
+    update();
+  }
+
   void decreaseItem(int index) {
     Product1 product = cartProducts[index];
     if (product.quantity > 0) {
