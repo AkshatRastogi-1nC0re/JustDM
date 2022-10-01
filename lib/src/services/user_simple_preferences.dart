@@ -41,4 +41,13 @@ class UserSimplePreferences {
     await setInfoAvailable(true);
     return true;
   }
+
+  Future<List<String>> getUserData() async {
+    List<String> userData = [];
+    userData.add(getUserName()!);
+    userData.add(getUserPhone()!);
+    userData.add(getUserAddress()!);
+    userData.add(getUserGender()!);
+    return userData;
+  }
 }
