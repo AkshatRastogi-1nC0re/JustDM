@@ -1,7 +1,7 @@
 import 'package:JustDM/src/view/screen/size_config.dart';
 import 'package:flutter/material.dart';
 
-const kPrimaryColor = Color(0xff59b24d);
+const kPrimaryColor = Color(0xFFFF7643);
 const kPrimaryColor2 = Color(0xff3bd80d);
 const kPrimaryColor3 = Color(0xfff8e1a9);
 const kPrimaryTextColor = Color(0xff212f44);
