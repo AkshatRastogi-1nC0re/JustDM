@@ -5,9 +5,11 @@ import 'package:JustDM/src/view/screen/storeselect.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import '../constants.dart';
+import '../profile.dart';
 import '../size_config.dart';
 import 'components/ProductCard.dart';
 
@@ -47,40 +49,56 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    margin: const EdgeInsets.all(20),
-                    width: MediaQuery.of(context).size.width,
-                    height: 65,
-                    decoration: BoxDecoration(
-                      color: kSecondaryColor.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Center(
-                      child: TextField(
-                        style: const TextStyle(fontSize: 14),
-                        focusNode: focusNode,
-                        textInputAction: TextInputAction.search,
-                        onChanged: (value) {},
-                        onSubmitted: (value) {},
-                        decoration: InputDecoration(
-                          contentPadding:
+                  Row(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.all(20),
+                        width: MediaQuery.of(context).size.width-90,
+                        height: 65,
+                        decoration: BoxDecoration(
+                          color: kSecondaryColor.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Center(
+                          child: TextField(
+                            style: const TextStyle(fontSize: 14),
+                            focusNode: focusNode,
+                            textInputAction: TextInputAction.search,
+                            onChanged: (value) {},
+                            onSubmitted: (value) {},
+                            decoration: InputDecoration(
+                              contentPadding:
                               const EdgeInsets.symmetric(vertical: 16),
-                          // horizontal: getProportionateScreenHeight(20),
-                          border: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          hintText: "Search product",
-                          hintStyle: TextStyle(
-                            fontSize: getProportionateScreenHeight(14),
-                          ),
-                          prefixIcon: const Icon(
-                            Icons.search,
-                            size: (18),
+                              // horizontal: getProportionateScreenHeight(20),
+                              border: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                              hintText: "Search product",
+                              hintStyle: TextStyle(
+                                fontSize: getProportionateScreenHeight(14),
+                              ),
+                              prefixIcon: const Icon(
+                                Icons.search,
+                                size: (18),
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                    ),
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Profile()));
+                        },
+                          child: SvgPicture.asset(
+                            "assets/icons/User.svg",
+                            color: kPrimaryColor,
+                            width: 22,
+                          )
+                      )
+                    ],
                   ),
+
                   CarouselSlider(
                     options: CarouselOptions(
                         autoPlay: true,
