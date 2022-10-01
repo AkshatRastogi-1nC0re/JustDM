@@ -216,7 +216,8 @@ class _RegisterCardState extends State<RegisterCard> {
               return Align(
                 alignment: Alignment.center,
                 child: controller.loading.value == false
-                    ? GradientButton(
+                    ? GradientButton
+                  (
                         title: "Continue",
                         buttonwidth: 300,
                         onPressed: () {
