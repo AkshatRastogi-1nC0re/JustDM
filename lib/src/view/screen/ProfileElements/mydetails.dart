@@ -1,9 +1,9 @@
+import 'package:JustDM/src/services/user_simple_preferences.dart';
 import 'package:JustDM/src/view/screen/ProfileElements/profilepic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../constants.dart';
-
 
 class MyDetails extends StatefulWidget {
   const MyDetails({Key? key}) : super(key: key);
@@ -13,6 +13,25 @@ class MyDetails extends StatefulWidget {
 }
 
 class _MyDetailsState extends State<MyDetails> {
+  String name = "";
+  String phone = "";
+  String address = "";
+  String gender = "";
+
+  @override
+  void initState() {
+    UserSimplePreferences usp = UserSimplePreferences();
+    usp.getUserData().then((value) => {
+          setState(() {
+            name = value[0];
+            phone = value[1];
+            address = value[2];
+            gender = value[3];
+          })
+        });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -23,43 +42,33 @@ class _MyDetailsState extends State<MyDetails> {
           SizedBox(height: 20),
           ProfileMenu1(
             text1: "Name",
-            text2: "Aryan Solanki",
+            text2: name,
             icon: "assets/icons/User Icon.svg",
-            press: () => {
-
-          },
+            press: () => {},
           ),
           ProfileMenu1(
             text1: "Number",
-            text2: "7982916348",
+            text2: phone,
             icon: "assets/icons/User Icon.svg",
-            press: () => {
-
-            },
+            press: () => {},
           ),
           ProfileMenu1(
             text1: "Hostel",
-            text2: "C4 - 303",
+            text2: address,
             icon: "assets/icons/User Icon.svg",
-            press: () => {
-
-            },
+            press: () => {},
           ),
           ProfileMenu1(
             text1: "Gender",
-            text2: "Male",
+            text2: gender,
             icon: "assets/icons/User Icon.svg",
-            press: () => {
-
-            },
+            press: () => {},
           ),
         ],
       ),
     );
   }
 }
-
-
 
 class ProfileMenu1 extends StatelessWidget {
   const ProfileMenu1({
@@ -70,7 +79,7 @@ class ProfileMenu1 extends StatelessWidget {
     this.press,
   }) : super(key: key);
 
-  final String text1,text2, icon;
+  final String text1, text2, icon;
   final VoidCallback? press;
 
   @override
@@ -82,7 +91,7 @@ class ProfileMenu1 extends StatelessWidget {
           primary: kPrimaryColor,
           padding: EdgeInsets.all(20),
           shape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           backgroundColor: Color(0xFFF5F6F9),
         ),
         onPressed: press,
@@ -90,7 +99,11 @@ class ProfileMenu1 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(child: Text(text1)),
-            Expanded(child: Text(text2,overflow: TextOverflow.ellipsis,)),
+            Expanded(
+                child: Text(
+              text2,
+              overflow: TextOverflow.ellipsis,
+            )),
           ],
         ),
       ),
