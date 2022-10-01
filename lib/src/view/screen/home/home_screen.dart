@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Container(
                         margin: const EdgeInsets.all(20),
-                        width: MediaQuery.of(context).size.width-90,
+                        width: MediaQuery.of(context).size.width - 90,
                         height: 65,
                         decoration: BoxDecoration(
                           color: kSecondaryColor.withOpacity(0.1),
@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             onSubmitted: (value) {},
                             decoration: InputDecoration(
                               contentPadding:
-                              const EdgeInsets.symmetric(vertical: 16),
+                                  const EdgeInsets.symmetric(vertical: 16),
                               // horizontal: getProportionateScreenHeight(20),
                               border: InputBorder.none,
                               focusedBorder: InputBorder.none,
@@ -86,19 +86,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: (){
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => Profile()));
-                        },
+                          onTap: () {
+                            Get.offAll(const Profile());
+                          },
                           child: SvgPicture.asset(
                             "assets/icons/User.svg",
                             color: kPrimaryColor,
                             width: 22,
-                          )
-                      )
+                          ))
                     ],
                   ),
-
                   CarouselSlider(
                     options: CarouselOptions(
                         autoPlay: true,
