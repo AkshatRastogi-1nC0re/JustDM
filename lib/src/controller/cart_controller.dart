@@ -8,6 +8,10 @@ import '../model/numerical.dart';
 import '../model/product.dart';
 import '../model/product_category.dart';
 import '../model/product_size_type.dart';
+import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
 class CartController extends GetxController {
   RxList<Product> allProducts = AppData.products.obs;
