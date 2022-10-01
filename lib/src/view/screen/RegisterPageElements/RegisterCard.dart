@@ -232,6 +232,16 @@ class _RegisterCardState extends State<RegisterCard> {
                                 backgroundColor: Colors.grey,
                                 textColor: Colors.white,
                                 fontSize: 16.0);
+                          } else if (mobile.length != 10 &&
+                              !mobile.isNumericOnly) {
+                            Fluttertoast.showToast(
+                                msg: "Please enter valid phone number",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.grey,
+                                textColor: Colors.white,
+                                fontSize: 16.0);
                           } else {
                             controller.loading.value = true;
                             var data = {
