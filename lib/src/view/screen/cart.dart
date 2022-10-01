@@ -161,13 +161,13 @@ class _CartState extends State<Cart> {
                       }),
                       GestureDetector(
                         onTap: () {
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => Webpayment(
-                          //               price:
-                          //                   controller.totalPrice.value * 100,
-                          //             )));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Webpayment(
+                                        price:
+                                            controller.totalPrice.value * 100,
+                                      )));
                           // createOrder();
                         },
                         child: Row(
