@@ -25,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   dynamic argumentData = Get.arguments;
   String storeCode = "";
   FocusNode focusNode = FocusNode();
+
   int _index = 0;
   List<Product1> productList = [];
 

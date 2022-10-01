@@ -1,7 +1,9 @@
-import 'package:JustDM/src/view/screen/ProfileElements/profilemenu.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'ProfileElements/mydetails.dart';
+import 'ProfileElements/profilemenu.dart';
 import 'ProfileElements/profilepic.dart';
 
 class Profile extends StatefulWidget {
@@ -25,7 +27,10 @@ class _ProfileState extends State<Profile> {
           ProfileMenu(
             text: "My Account",
             icon: "assets/icons/User Icon.svg",
-            press: () => {},
+            press: () => {
+            Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => MyDetails()))
+            },
           ),
           ProfileMenu(
             text: "Notifications",
