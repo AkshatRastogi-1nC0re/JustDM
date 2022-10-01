@@ -79,6 +79,7 @@ flutter:
   assets:
     - assets/
     - assets/selectstore/
+    - payments.html
   #   - images/a_dot_ham.jpeg
   fonts:
     - family: Montserrat-Extralight
