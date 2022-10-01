@@ -6,6 +6,7 @@ import 'package:JustDM/src/model/product1.dart';
 import 'package:JustDM/src/view/screen/CartElements/longproductcard.dart';
 import 'package:JustDM/src/view/screen/constants.dart';
 import 'package:JustDM/src/view/screen/home/home_screen.dart';
+import 'package:JustDM/src/view/screen/payments.dart';
 import 'package:JustDM/src/view/screen/size_config.dart';
 import 'package:JustDM/src/view/screen/storeselect.dart';
 import 'package:flutter/material.dart';
@@ -40,123 +41,6 @@ class _CartState extends State<Cart> {
     totalprice = argumentData[1];
     controller.cartProducts.value = cartitems;
     controller.totalPrice.value = totalprice;
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
-      _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
-      _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
-    });
-  }
-
-  @override
-  void dispose() {
-    _razorpay.clear();
-    super.dispose();
-  }
-
-  void _handlePaymentSuccess(PaymentSuccessResponse response) {
-    // Do something when payment succeeds
-    verifySignature(
-      signature: response.signature,
-      paymentId: response.paymentId,
-      orderId: response.orderId,
-    );
-  }
-
-  void _handlePaymentError(PaymentFailureResponse response) {
-    // Do something when payment fails
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(response.message ?? ''),
-      ),
-    );
-  }
-
-  void _handleExternalWallet(ExternalWalletResponse response) {
-    // Do something when an external wallet is selected
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(response.walletName ?? ''),
-      ),
-    );
-  }
-
-  // create order
-  void createOrder() async {
-    String username = razorCredentials.keyId;
-    String password = razorCredentials.keySecret;
-    String basicAuth =
-        'Basic ${base64Encode(utf8.encode('$username:$password'))}';
-
-    Map<String, dynamic> body = {
-      "amount": 100,
-      "currency": "INR",
-      "receipt": "rcptid_11"
-    };
-    var res = await http.post(
-      Uri.https(
-          "api.razorpay.com", "v1/orders"), //https://api.razorpay.com/v1/orders
-      headers: <String, String>{
-        "Content-Type": "application/json",
-        'authorization': basicAuth,
-      },
-      body: jsonEncode(body),
-    );
-
-    if (res.statusCode == 200) {
-      openGateway(jsonDecode(res.body)['id']);
-    }
-  }
-
-  openGateway(String orderId) {
-    var options = {
-      'key': razorCredentials.keyId,
-      'amount': 100, //in the smallest currency sub-unit.
-      'name': 'Acme Corp.',
-      'order_id': orderId, // Generate order_id using Orders API
-      'description': 'Fine T-Shirt',
-      'timeout': 60 * 5, // in seconds // 5 minutes
-      'prefill': {
-        'contact': '9123456789',
-        'email': 'ary@example.com',
-      }
-    };
-    _razorpay.open(options);
-  }
-
-  verifySignature({
-    String? signature,
-    String? paymentId,
-    String? orderId,
-  }) async {
-    Map<String, dynamic> body = {
-      'razorpay_signature': signature,
-      'razorpay_payment_id': paymentId,
-      'razorpay_order_id': orderId,
-    };
-
-    var parts = [];
-    body.forEach((key, value) {
-      parts.add('${Uri.encodeQueryComponent(key)}='
-          '${Uri.encodeQueryComponent(value)}');
-    });
-    var formData = parts.join('&');
-    var res = await http.post(
-      Uri.https(
-        "10.0.2.2", // my ip address , localhost
-        "razorpay_signature_verify.php",
-      ),
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded", // urlencoded
-      },
-      body: formData,
-    );
-    if (res.statusCode == 200) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(res.body),
-        ),
-      );
-    }
   }
 
   @override
@@ -277,7 +161,14 @@ class _CartState extends State<Cart> {
                       }),
                       GestureDetector(
                         onTap: () {
-                          createOrder();
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => Webpayment(
+                          //               price:
+                          //                   controller.totalPrice.value * 100,
+                          //             )));
+                          // createOrder();
                         },
                         child: Row(
                           children: const [
