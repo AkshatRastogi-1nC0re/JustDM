@@ -1,5 +1,6 @@
 import 'package:JustDM/src/view/screen/ProfileElements/profilemenu.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'ProfileElements/profilepic.dart';
 
@@ -9,6 +10,8 @@ class Profile extends StatefulWidget {
   @override
   _ProfileState createState() => _ProfileState();
 }
+
+final Profile controller = Get.put(Profile());
 
 class _ProfileState extends State<Profile> {
   @override
